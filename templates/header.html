@@ -1,0 +1,46 @@
+<div class="AWS_header">
+
+    <div>
+        <h1 class="AWS_logo"><a href = "{% url 'serviceapp:service' %}" >A W S</a></h1>
+    </div>
+
+    <div class="header_navbar">
+
+        <a href="{% url 'serviceapp:service' %}" class="header_nav">
+            <span>Service</span>
+        </a>
+
+        <a href="{% url 'projectapp:list' %}" class="header_nav">
+            <span>Project</span>
+        </a>
+
+{#        <a href="{% url 'functionapp:list' %}" class="header_nav">#}
+{#            <span>List</span>#}
+{#        </a>#}
+
+        <a href="{% url 'functionapp:F_main' %}" class="header_nav">
+            <span>Function</span>
+        </a>
+
+        {% if not user.is_authenticated %}
+            <a href="{% url 'accountapp:login' %}?next={{ request.path }}" class="header_nav">
+                <span>Login</span>
+            </a>
+
+            <a href="{% url 'accountapp:create' %}" class="header_nav">
+                <span>SignUP</span>
+            </a>
+
+        {% else %}
+            <a href="{% url 'accountapp:detail' pk=user.pk %}" class="header_nav">
+                <span>MyPage</span>
+            </a>
+
+            <a href="{% url 'accountapp:logout' %}" class="header_nav">
+                <span>Logout</span>
+            </a>
+        {% endif %}
+
+    </div>
+
+</div>
